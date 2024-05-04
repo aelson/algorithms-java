@@ -3,7 +3,7 @@ package tech.aelson.algorithms.sort.merge_sort;
 import tech.aelson.algorithms.model.Grade;
 import tech.aelson.algorithms.util.Util;
 
-public class MergeSortTester {
+public class MergeSortTwoArraysTester {
     public static void main(String[] args) {
         Grade[] firstArray = {
                 new Grade("andre", 4),
@@ -22,7 +22,7 @@ public class MergeSortTester {
         Util.printGradesArray("First array: ", firstArray);
         Util.printGradesArray("Second array: ", secondArray);
 
-        Grade[] rank = MergeSort.execute(firstArray, secondArray);
+        Grade[] rank = MergeSort.mergeTwoArrays(firstArray, secondArray);
         Util.printGradesArray("Merged array: ", rank);
     }
 }

@@ -3,7 +3,7 @@ package tech.aelson.algorithms.sort.merge_sort;
 import tech.aelson.algorithms.model.Grade;
 
 public class MergeSort {
-    public static Grade[] execute(Grade[] firstArray, Grade[] secondArray) {
+    public static Grade[] mergeTwoArrays(Grade[] firstArray, Grade[] secondArray) {
         int total = firstArray.length + secondArray.length;
         Grade[] merged = new Grade[total];
         int currentOfFirstArray = 0;
@@ -40,5 +40,48 @@ public class MergeSort {
             currentOfMerged++;
         }
         return merged;
+    }
+
+    public static Grade[] sortOneArray(Grade[] array, int start, int middle, int end) {
+        int total = array.length;
+        Grade[] sorted = new Grade[total - start];
+        int sortedIndex = 0;
+        int firstPartIndex = start;
+        int secondPartIndex = middle;
+        while (firstPartIndex < middle && secondPartIndex < end) {
+            System.out.println("Comparing " + array[firstPartIndex].studentName() + " (" + array[firstPartIndex].result() + ") with " + array[secondPartIndex].studentName() + " (" + array[secondPartIndex].result() + ")");
+
+            if (array[firstPartIndex].result() < array[secondPartIndex].result()) {
+                System.out.println("-> Inserting " + array[firstPartIndex].studentName() + " (" + array[firstPartIndex].result() + ") on the position " + sortedIndex);
+                sorted[sortedIndex] = array[firstPartIndex];
+                firstPartIndex++;
+            } else {
+                System.out.println("-> Inserting " + array[secondPartIndex].studentName() + " (" + array[secondPartIndex].result() + ") on the position " + sortedIndex);
+                sorted[sortedIndex] = array[secondPartIndex];
+                secondPartIndex++;
+            }
+            System.out.println("------------------------------------");
+            sortedIndex++;
+        }
+        while (firstPartIndex < middle) {
+            System.out.println("-> Inserting " + array[firstPartIndex].studentName() + " (" + array[firstPartIndex].result() + ") on the position " + sortedIndex + " because it is left over from the first part of the array");
+            sorted[sortedIndex] = array[firstPartIndex];
+            firstPartIndex++;
+            sortedIndex++;
+        }
+        while (secondPartIndex < end) {
+            System.out.println("-> Inserting " + array[secondPartIndex].studentName() + " (" + array[secondPartIndex].result() + ") on the position " + sortedIndex + " because it is left over from the second part of the array");
+            sorted[sortedIndex] = array[secondPartIndex];
+            secondPartIndex++;
+            sortedIndex++;
+        }
+        if (start > 0) {
+            System.out.println("Rebuilding the original array keeping the initial object(s) not ordered (because the start is greater then 0)");
+            for (int indexOfMerged = 0; indexOfMerged < sortedIndex; indexOfMerged++) {
+                System.out.println("-> Inserting " + sorted[indexOfMerged].studentName() + " (" + sorted[indexOfMerged].result() + ") on the position " + indexOfMerged);
+                array[start + indexOfMerged] = sorted[indexOfMerged];
+            }
+        }
+        return array;
     }
 }
