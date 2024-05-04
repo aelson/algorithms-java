@@ -1,4 +1,4 @@
-package tech.aelson.algorithms.sort.selectionSort;
+package tech.aelson.algorithms.sort.selection_sort;
 
 import tech.aelson.algorithms.model.Product;
 import tech.aelson.algorithms.util.Util;

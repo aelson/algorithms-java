@@ -1,4 +1,4 @@
-package tech.aelson.algorithms.sort.novoSort;
+package tech.aelson.algorithms.sort.insertion_sort;
 
 import tech.aelson.algorithms.model.Product;
 import tech.aelson.algorithms.util.Util;
