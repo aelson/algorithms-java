@@ -6,7 +6,7 @@ public class SearchSmallest {
     public static int execute(Product[] products, int start, int end) {
         int smallest = start;
         for (int atual = start; atual <= end; atual++) {
-            if (products[atual].getPrice() < products[smallest].getPrice()) {
+            if (products[atual].price() < products[smallest].price()) {
                 smallest = atual;
             }
         }

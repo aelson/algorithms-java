@@ -14,6 +14,6 @@ public class SearchSmallestTester {
 
         int smallest = SearchSmallest.execute(products, 0, 4);
         System.out.println(smallest);
-        System.out.println("The car " + products[smallest].getName() + " costs " + products[smallest].getPrice());
+        System.out.println("The car " + products[smallest].name() + " costs " + products[smallest].price());
     }
 }

@@ -10,7 +10,7 @@ public class Util {
         Product firstProduct = products[first];
         Product secondProduct = products[second];
 
-        System.out.println("<-> Swapping product " + firstProduct.getName() + " with " + secondProduct.getName());
+        System.out.println("<-> Swapping product " + firstProduct.name() + " with " + secondProduct.name());
 
         products[first] = secondProduct;
         products[second] = firstProduct;
@@ -21,7 +21,7 @@ public class Util {
     public static void printProductsArray(String arrayTitle, Product[] products) {
         System.out.println(arrayTitle);
         for (Product product : products) {
-            System.out.println(product.getName() + " costs " + product.getPrice());
+            System.out.println(product.name() + " costs " + product.price());
         }
     }
 

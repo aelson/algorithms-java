@@ -8,7 +8,7 @@ public class InsertionSort {
         for (int current = 1; current < numberOfElements; current++) {
             System.out.println("I am in the element " + current);
             int elementBeingAnalysed = current;
-            while (elementBeingAnalysed > 0 && products[elementBeingAnalysed].getPrice() < products[elementBeingAnalysed - 1].getPrice()) {
+            while (elementBeingAnalysed > 0 && products[elementBeingAnalysed].price() < products[elementBeingAnalysed - 1].price()) {
                 Util.swap(products, elementBeingAnalysed, elementBeingAnalysed - 1);
                 elementBeingAnalysed--;
             }
