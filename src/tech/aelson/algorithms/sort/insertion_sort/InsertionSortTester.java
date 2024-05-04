@@ -6,9 +6,9 @@ import tech.aelson.algorithms.util.Util;
 public class InsertionSortTester {
     public static void main(String[] args) {
         Product[] products = Util.getUnsortedProducts();
-        Util.printArray("Original array: ", products);
+        Util.printProductsArray("Original array: ", products);
 
         InsertionSort.execute(products, products.length);
-        Util.printArray("Sorted array: ", products);
+        Util.printProductsArray("Sorted array: ", products);
     }
 }

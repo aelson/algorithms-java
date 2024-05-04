@@ -1,5 +1,6 @@
 package tech.aelson.algorithms.util;
 
+import tech.aelson.algorithms.model.Grade;
 import tech.aelson.algorithms.model.Product;
 
 public class Util {
@@ -17,10 +18,17 @@ public class Util {
         System.out.println("------------------------------------");
     }
 
-    public static void printArray(String arrayTitle, Product[] products) {
+    public static void printProductsArray(String arrayTitle, Product[] products) {
         System.out.println(arrayTitle);
         for (Product product : products) {
             System.out.println(product.getName() + " costs " + product.getPrice());
+        }
+    }
+
+    public static void printGradesArray(String arrayTitle, Grade[] grades) {
+        System.out.println(arrayTitle);
+        for (Grade grade : grades) {
+            System.out.println(grade.getStudentName() + " " + grade.getResult());
         }
     }
 
