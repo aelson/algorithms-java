@@ -27,18 +27,8 @@ public class MergeSort {
             System.out.println("------------------------------------");
             currentOfMerged++;
         }
-        while (currentOfFirstArray < firstArray.length) {
-            System.out.println("-> Inserting " + firstArray[currentOfFirstArray].studentName() + " (" + firstArray[currentOfFirstArray].result() + ") on the position " + currentOfMerged + " because it is left over from the first array");
-            merged[currentOfMerged] = firstArray[currentOfFirstArray];
-            currentOfFirstArray++;
-            currentOfMerged++;
-        }
-        while (currentOfSecondArray < secondArray.length) {
-            System.out.println("-> Inserting " + secondArray[currentOfSecondArray].studentName() + " (" + secondArray[currentOfSecondArray].result() + ") on the position " + currentOfMerged + " because it is left over from the second array");
-            merged[currentOfMerged] = secondArray[currentOfSecondArray];
-            currentOfSecondArray++;
-            currentOfMerged++;
-        }
+        currentOfMerged = addRemainingElementsToEndOfArray(firstArray, firstArray.length, currentOfFirstArray, merged, currentOfMerged);
+        addRemainingElementsToEndOfArray(secondArray, secondArray.length, currentOfSecondArray, merged, currentOfMerged);
         return merged;
     }
 
@@ -63,25 +53,30 @@ public class MergeSort {
             System.out.println("------------------------------------");
             sortedIndex++;
         }
-        while (firstPartIndex < middle) {
-            System.out.println("-> Inserting " + array[firstPartIndex].studentName() + " (" + array[firstPartIndex].result() + ") on the position " + sortedIndex + " because it is left over from the first part of the array");
-            sorted[sortedIndex] = array[firstPartIndex];
-            firstPartIndex++;
-            sortedIndex++;
-        }
-        while (secondPartIndex < end) {
-            System.out.println("-> Inserting " + array[secondPartIndex].studentName() + " (" + array[secondPartIndex].result() + ") on the position " + sortedIndex + " because it is left over from the second part of the array");
-            sorted[sortedIndex] = array[secondPartIndex];
-            secondPartIndex++;
-            sortedIndex++;
-        }
-        if (start > 0) {
-            System.out.println("Rebuilding the original array keeping the initial object(s) not ordered (because the start is greater then 0)");
-            for (int indexOfMerged = 0; indexOfMerged < sortedIndex; indexOfMerged++) {
-                System.out.println("-> Inserting " + sorted[indexOfMerged].studentName() + " (" + sorted[indexOfMerged].result() + ") on the position " + indexOfMerged);
-                array[start + indexOfMerged] = sorted[indexOfMerged];
-            }
+
+        sortedIndex = addRemainingElementsToEndOfArray(array, middle, firstPartIndex, sorted, sortedIndex);
+        addRemainingElementsToEndOfArray(array, end, secondPartIndex, sorted, sortedIndex);
+        if (start + end < array.length) {
+            rebuildArray(array, start, sortedIndex, sorted);
         }
         return array;
+    }
+
+    private static int addRemainingElementsToEndOfArray(Grade[] array, int arrayEnd, int arrayIndex, Grade[] merged, int mergedArrayIndex) {
+        while (arrayIndex < arrayEnd) {
+            System.out.println("-> Inserting " + array[arrayIndex].studentName() + " (" + array[arrayIndex].result() + ") on the position " + mergedArrayIndex + " because it is left over from the first array");
+            merged[mergedArrayIndex] = array[arrayIndex];
+            arrayIndex++;
+            mergedArrayIndex++;
+        }
+        return mergedArrayIndex;
+    }
+
+    private static void rebuildArray(Grade[] array, int start, int sortedIndex, Grade[] sorted) {
+        System.out.println("Rebuilding the original array");
+        for (int indexOfMerged = 0; indexOfMerged < sortedIndex; indexOfMerged++) {
+            System.out.println("-> Inserting " + sorted[indexOfMerged].studentName() + " (" + sorted[indexOfMerged].result() + ") on the position " + indexOfMerged);
+            array[start + indexOfMerged] = sorted[indexOfMerged];
+        }
     }
 }
