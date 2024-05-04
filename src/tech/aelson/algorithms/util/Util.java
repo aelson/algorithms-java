@@ -28,7 +28,7 @@ public class Util {
     public static void printGradesArray(String arrayTitle, Grade[] grades) {
         System.out.println(arrayTitle);
         for (Grade grade : grades) {
-            System.out.println(grade.getStudentName() + " " + grade.getResult());
+            System.out.println(grade.studentName() + " " + grade.result());
         }
     }
 
