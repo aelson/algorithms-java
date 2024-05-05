@@ -1,15 +1,14 @@
-package tech.aelson.algorithms.search.find_smaller_elements;
+package tech.aelson.algorithms.sort.quick_sort;
 
 import tech.aelson.algorithms.model.Grade;
 import tech.aelson.algorithms.util.Util;
 
-public class FindSmallerElementsTester {
-
+public class QuickSortTester {
     public static void main(String[] args) {
         Grade guilherme = new Grade("guilherme", 7);
         Grade[] unsortedGrades = Util.getUnsortedGrades(guilherme);
 
-        int lowerValuesCount = FindSmallerElements.execute(guilherme, unsortedGrades);
-        System.out.println("Lower values count: " + lowerValuesCount);
+        QuickSort.execute(unsortedGrades, 0, unsortedGrades.length);
+        Util.printGradesArray("Sorted array: ", unsortedGrades);
     }
 }
