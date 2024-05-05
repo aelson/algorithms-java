@@ -3,6 +3,17 @@ package tech.aelson.algorithms.sort.merge_sort;
 import tech.aelson.algorithms.model.Grade;
 
 public class MergeSort {
+
+    public static void mergeSort(Grade[] grades, int start, int end) {
+        int numberOfElements = end - start;
+        if (numberOfElements > 1) {
+            int middle = (start + end) / 2;
+            mergeSort(grades, start, middle);
+            mergeSort(grades, middle, end);
+            sortOneArrayWithTwoOrderedHalfs(grades, start, middle, end);
+        }
+    }
+
     public static Grade[] mergeTwoArrays(Grade[] firstArray, Grade[] secondArray) {
         int total = firstArray.length + secondArray.length;
         Grade[] merged = new Grade[total];
@@ -32,9 +43,8 @@ public class MergeSort {
         return merged;
     }
 
-    public static Grade[] sortOneArray(Grade[] array, int start, int middle, int end) {
-        int total = array.length;
-        Grade[] sorted = new Grade[total - start];
+    public static void sortOneArrayWithTwoOrderedHalfs(Grade[] array, int start, int middle, int end) {
+        Grade[] sorted = new Grade[end - start];
         int sortedIndex = 0;
         int firstPartIndex = start;
         int secondPartIndex = middle;
@@ -56,10 +66,7 @@ public class MergeSort {
 
         sortedIndex = addRemainingElementsToEndOfArray(array, middle, firstPartIndex, sorted, sortedIndex);
         addRemainingElementsToEndOfArray(array, end, secondPartIndex, sorted, sortedIndex);
-        if (start + end < array.length) {
-            rebuildArray(array, start, sortedIndex, sorted);
-        }
-        return array;
+        rebuildArray(array, start, sortedIndex, sorted);
     }
 
     private static int addRemainingElementsToEndOfArray(Grade[] array, int arrayEnd, int arrayIndex, Grade[] merged, int mergedArrayIndex) {
