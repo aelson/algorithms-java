@@ -1,8 +1,8 @@
-package tech.aelson.algorithms.search;
+package tech.aelson.algorithms.search.find_smallest;
 
 import tech.aelson.algorithms.model.Product;
 
-public class SearchSmallest {
+public class FindSmallest {
     public static int execute(Product[] products, int start, int end) {
         int smallest = start;
         for (int atual = start; atual <= end; atual++) {

@@ -1,8 +1,8 @@
-package tech.aelson.algorithms.search;
+package tech.aelson.algorithms.search.find_smallest;
 
 import tech.aelson.algorithms.model.Product;
 
-public class SearchSmallestTester {
+public class FindSmallestTester {
     public static void main(String[] args) {
         Product[] products = {
                 new Product("Tesla Model 3", 50000),
@@ -12,7 +12,7 @@ public class SearchSmallestTester {
                 new Product("Audi Q5", 45000)
         };
 
-        int smallest = SearchSmallest.execute(products, 0, 4);
+        int smallest = FindSmallest.execute(products, 0, 4);
         System.out.println(smallest);
         System.out.println("The car " + products[smallest].name() + " costs " + products[smallest].price());
     }
