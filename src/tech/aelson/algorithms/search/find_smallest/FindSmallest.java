@@ -5,9 +5,9 @@ import tech.aelson.algorithms.model.Product;
 public class FindSmallest {
     public static int execute(Product[] products, int start, int end) {
         int smallest = start;
-        for (int atual = start; atual <= end; atual++) {
-            if (products[atual].price() < products[smallest].price()) {
-                smallest = atual;
+        for (int index = start; index <= end; index++) {
+            if (products[index].price() < products[smallest].price()) {
+                smallest = index;
             }
         }
         return smallest;
